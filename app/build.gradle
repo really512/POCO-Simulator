@@ -1,0 +1,14 @@
+plugins { id 'com.android.application' }
+
+android {
+    namespace 'com.poco.simulator'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.poco.x3pro.simulator'
+        minSdk 23
+        targetSdk 35
+        versionCode 1
+        versionName '0.1'
+    }
+}

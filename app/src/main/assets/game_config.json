@@ -1,0 +1,16 @@
+{
+  "device": "Poco X3 Pro",
+  "version": "0.1",
+  "tool": {
+    "throwable": true,
+    "explodes_on_impact": true,
+    "cooldown_seconds": 1
+  },
+  "upgrades": [
+    "CPU",
+    "GPU",
+    "Cooling",
+    "Battery",
+    "Performance"
+  ]
+}

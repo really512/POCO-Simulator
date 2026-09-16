@@ -1,0 +1,45 @@
+name: Build Poco X3 Pro Simulator
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.7'
+
+      - name: Build APK
+        run: gradle assembleDebug --no-daemon
+
+      - name: Package APKS
+        run: |
+          mkdir -p artifacts
+          cp app/build/outputs/apk/debug/app-debug.apk artifacts/base.apk
+          cd artifacts
+          zip -r ../Poco_X3_Pro_Simulator.apks base.apk
+
+      - name: Upload APK/APKS
+        uses: actions/upload-artifact@v4
+        with:
+          name: Poco_X3_Pro_Simulator_APK_APKS
+          path: |
+            app/build/outputs/apk/debug/app-debug.apk
+            Poco_X3_Pro_Simulator.apks

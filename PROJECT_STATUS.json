@@ -1,0 +1,10 @@
+{
+  "project": "Poco X3 Pro Simulator",
+  "version": "0.2-build-ready-avatar",
+  "has_manifest": true,
+  "has_main_activity": true,
+  "has_launcher_icon": true,
+  "has_avatar_png": true,
+  "apk_built": false,
+  "apks_built": false
+}
